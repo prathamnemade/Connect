@@ -1,0 +1,15 @@
+br {
+    display: block;
+    content: "";
+    margin-top: 10px;
+}
+
+input{
+    height: 22px;
+    background: #DCDCDC;
+    border: 0;
+    margin-top:5px 
+}
+.button{
+    border:0;
+}

@@ -12,3 +12,7 @@ input{
 .button{
     border:0;
 }
+.inputFont{
+    font-size: 11px;
+    width: 100%;
+}

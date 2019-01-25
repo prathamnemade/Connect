@@ -13,16 +13,17 @@ margin-right: 50px;border-color: #DDDDD8 #AFAFAF #797975;">
   <div class="row sub_title" style="display: inherit;">
     Login with your Connect credentials
   </div><br>
-  <div class="row">
-    <div class="col-md-5">Username</div>
-    <div class="col-md-6"><input type="text"></div>
-  </div><br>
-  <div class="row">
-    <div class="col-md-5">Password</div>
-    <div class="col-md-6"><input type="password"></div>
-  </div><br>
-  <div class="row" style="position:inherit;float:right;margin-right: 7px;">
-    <button class="button" style="padding: 0px 4px 1px;
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmitLoginUserDetails(loginForm.value)">
+    <div class="row">
+      <div class="col-md-5">Username</div>
+      <div class="col-md-6"><input type="text" class="inputFont" formControlName="email"></div>
+    </div><br>
+    <div class="row">
+      <div class="col-md-5">Password</div>
+      <div class="col-md-6"><input type="password" class="inputFont" formControlName="password"></div>
+    </div><br>
+    <div class="row" style="position:inherit;float:right;margin-right: 7px;">
+      <button class="button" type="submit" [disabled]="!loginForm.valid" style="padding: 0px 4px 1px;
     border-width: 1px;
     border-style: solid;
     border-color: #DDDDD8 #AFAFAF #797975;
@@ -31,5 +32,6 @@ margin-right: 50px;border-color: #DDDDD8 #AFAFAF #797975;">
     font-size: 11px;
     white-space: nowrap;
     overflow: visible;">Login</button><br>
-  </div>
+    </div>
+  </form>
 </div>

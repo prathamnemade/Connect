@@ -16,27 +16,29 @@ text-align: center;">
   <div class="row">
     Please fill the form to register with us...
   </div><br>
-  <div class="row">
-    <div class="col-md-5">First Name</div>
-    <div class="col-md-6"><input type="text" class="inputFont"></div>
-  </div><br>
-  <div class="row">
-    <div class="col-md-5">Last Name</div>
-    <div class="col-md-6"><input type="text" class="inputFont"></div>
-  </div><br>
-  <div class="row">
-    <div class="col-md-5">Email</div>
-    <div class="col-md-6"><input type="text" class="inputFont"></div>
-  </div><br>
-  <div class="row">
-    <div class="col-md-5">Password</div>
-    <div class="col-md-6"><input type="password" class="inputFont"></div>
-  </div><br>
-  <div class="row" style="display: inherit;">
-    <input type="radio" name="gender" value="male" checked> Male
-    <input type="radio" name="gender" value="female" style="    margin-left: 40px;"> Female
-  </div><br>
-  <div class="row" style="position:inherit;float:right;margin-right: 7px;">
-    <button class="submitButton">Submit</button>
-  </div>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmitUserDetails(registerForm.value)">
+    <div class="row">
+      <div class="col-md-5">First Name</div>
+      <div class="col-md-6"><input type="text" class="inputFont" formControlName="firstName"></div>
+    </div><br>
+    <div class="row">
+      <div class="col-md-5">Last Name</div>
+      <div class="col-md-6"><input type="text" class="inputFont" formControlName="lastName"></div>
+    </div><br>
+    <div class="row">
+      <div class="col-md-5">Email</div>
+      <div class="col-md-6"><input type="text" class="inputFont" formControlName="email"></div>
+    </div><br>
+    <div class="row">
+      <div class="col-md-5">Password</div>
+      <div class="col-md-6"><input type="password" class="inputFont" formControlName="password"></div>
+    </div><br>
+    <div class="row" style="display: inherit;">
+      <input type="radio" name="gender" value="male" checked formControlName="gender"> Male
+      <input type="radio" name="gender" value="female" style="margin-left: 40px;" formControlName="gender"> Female
+    </div><br>
+    <div class="row" style="position:inherit;float:right;margin-right: 7px;">
+      <button class="submitButton" type="submit" [disabled]="!registerForm.valid" >Submit</button>
+    </div>
+  </form>
 </div>

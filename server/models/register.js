@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-
+var crypto = require('crypto');
 const RegisterSchema =new mongoose.Schema({
   email: {
     type: String,
@@ -34,4 +34,8 @@ const RegisterSchema =new mongoose.Schema({
     required: true
   }
 });
+RegisterSchema.methods.setPassword = function (password) {
+    this.salt = crypto.randomBytes(16).toString('hex');
+    this.hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha512').toString('hex');
+};
 mongoose.model('Register', RegisterSchema);

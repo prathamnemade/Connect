@@ -11,7 +11,7 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 // [SH] Require Passport
 var passport = require('passport');
-
+var schema=require('./graphql/index')
 // [SH] Bring in the data model
 require('./server/config/db');
 // [SH] Bring in the Passport config after model is defined
@@ -41,11 +41,11 @@ app.use(passport.initialize());
 
 // [SH] Use the API routes when path starts with /api
 // app.use('/', routesApi);
-// app.use('/graphql', cors(), graphqlHTTP({
-//     schema: userSchema,
-//     rootValue: global,
-//     graphiql: true
-// }));
+app.use('/graphql', cors(), graphqlHTTP({
+    schema: schema,
+    rootValue: global,
+    graphiql: true
+}));
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
